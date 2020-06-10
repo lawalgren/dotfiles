@@ -1,0 +1,45 @@
+#!/bin/zsh
+# /usr/bin/i3exit
+
+# with openrc use loginctl
+function save {
+	~/.config/i3/scripts/save_restore.sh save
+}
+
+[ "$(cat /proc/1/comm)" = "systemd" ] && logind=systemctl || logind=loginctl
+
+case "$1" in
+    lock)
+        blurlock;
+        ;;
+    logout)
+	save;
+        i3-msg exit
+        ;;
+    switch_user)
+	save;
+	qdbus --system org.freedesktop.DisplayManager /org/freedesktop/DisplayManager/Seat0 org.freedesktop.DisplayManager.Seat.SwitchToGreeter
+        ;;
+    suspend)
+	save;
+        blurlock && $logind suspend
+        ;;
+    hibernate)
+	save;
+        blurlock && $logind hibernate
+        ;;
+    reboot)
+	save;
+        $logind reboot
+        ;;
+    shutdown)
+	save;
+        $logind poweroff
+        ;;
+    *)
+        echo "== ! i3exit: missing or invalid argument ! =="
+        echo "Try again with: lock | logout | switch_user | suspend | hibernate | reboot | shutdown"
+        exit 2
+esac
+
+exit 0
