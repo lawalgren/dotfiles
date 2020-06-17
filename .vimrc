@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized' 
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'powerline/powerline'
 
@@ -28,6 +28,10 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'itchyny/lightline.vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'mitsuhiko/jinja2'
+Plugin 'm-kat/aws-vim'
+Plugin 'speshak/vim-cfn'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -36,6 +40,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 syntax on
+set softtabstop=2
+set shiftwidth=2
 
 inoremap jk <Esc>
 
@@ -101,6 +107,16 @@ let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'yaml': 'yaml'}
 let g:vimwiki_list = [wiki]
 
 set laststatus=2
+
+" vim syntastic recommendations
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on

@@ -6,6 +6,30 @@
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+for_window [class="^.*"] border pixel 2
+gaps inner 15
+gaps outer 15
+
+bindsym $mod+z		gaps outer current plus 5
+bindsym $mod+Shift+z	gaps outer current minus 5
+
+
+# Color settings
+
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #424242
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #424242
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #424242
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #424242
+
+
 set $mod Mod1
 set $win Mod4
 
@@ -30,7 +54,7 @@ font pango:monospace 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -227,24 +251,29 @@ bindsym $mod+$win+w exec "feh --randomize --bg-fill ~/Pictures/Wallpapers/*"
 # finds out, if available)
 #
 bar {
+	position top
 	status_command i3blocks
 }
 
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
-# I had to set this for my system
 exec --no-startup-id "xrandr --output DP-2-8 --auto --primary --output DP-1-8 --auto --right-of DP-2-8"
+exec --no-startup-id "kill $(pidof chrome)"
+exec --no-startup-id "kill $(pidof slack)"
 exec --no-startup-id "lxqt-panel"
-exec --no-startup-id "start-stop-daemon -S -x /usr/bin/locktimer -b"
 exec --no-startup-id "/home/lucas/.config/i3/scripts/save_restore.sh restore"
+exec --no-startup-id "/usr/local/bin/picom -b"
+exec --no-startup-id "/home/lucas/.nix-profile/bin/xidlehook --not-when-fullscreen --not-when-audio --timer 15 'xrandr --output \"DP-2-8\" --brightness .1 --output \"DP-1-8\" --brightness .1' 'xrandr --output \"DP-2-8\" --brightness 1 --output \"DP-1-8\" --brightness 1' --timer 10 'xrandr --output \"DP-2-8\" --brightness 1 --output \"DP-1-8\" --brightness 1; blurlock' '' --timer 3600 'systemctl suspend' ''"
 
 assign [class="Google-chrome"] 1
 assign [class="Slack"] 2
-assign [class="Mailspring"] 2
+assign [class="Thunderbird"] 2
 assign [class="LibreOffice"] 2
-assign [class="Pcmanfm"] 3
-assign [class="Teamviewer"] 4
-assign [class="Steam"] 5
-assign [class="VLC"] 6
-assign [class="Spotify"] 7
+assign [class="sudoCharm"] 3
+assign [class="Designer"] 4
+assign [class="Pcmanfm"] 5
+assign [class="Teamviewer"] 6
+assign [class="Steam"] 7
+assign [class="VLC"] 8
+assign [class="Spotify"] 8
 
 exec --no-startup-id setxkbmap -option ctrl:nocaps

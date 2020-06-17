@@ -5,7 +5,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/lucas/.oh-my-zsh"
 
-export PATH="$PATH:/home/lucas/.local/bin"
+export PATH="$PATH:/home/lucas/.local/bin:/home/linuxbrew/.linuxbrew/bin"
 export QT_STYLE_OVERRIDE=kvantum
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -101,5 +101,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias clip="xclip -selection clipboard"
 source ~/.local/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# added by travis gem
+[ -f /home/lucas/.travis/travis.sh ] && source /home/lucas/.travis/travis.sh
 
 if [ -e /home/lucas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/lucas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
