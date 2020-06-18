@@ -33,7 +33,8 @@
 
 * Lubuntu 20.04
 * Papirus Icon Theme
-* Solarized SDDM Theme
+* Download fonts-font-awesome
+* Solarized SDDM Theme 
 * Download menu icon of choice
 * Download Harmony & Kvantum
 * Kvantum - export QT_STYLE_OVERRIDE=kvantum

@@ -257,9 +257,6 @@ bar {
 
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 exec --no-startup-id "xrandr --output DP-2-8 --auto --primary --output DP-1-8 --auto --right-of DP-2-8"
-exec --no-startup-id "kill $(pidof chrome)"
-exec --no-startup-id "kill $(pidof slack)"
-exec --no-startup-id "lxqt-panel"
 exec --no-startup-id "/home/lucas/.config/i3/scripts/save_restore.sh restore"
 exec --no-startup-id "/usr/local/bin/picom -b"
 exec --no-startup-id "/home/lucas/.nix-profile/bin/xidlehook --not-when-fullscreen --not-when-audio --timer 15 'xrandr --output \"DP-2-8\" --brightness .1 --output \"DP-1-8\" --brightness .1' 'xrandr --output \"DP-2-8\" --brightness 1 --output \"DP-1-8\" --brightness 1' --timer 10 'xrandr --output \"DP-2-8\" --brightness 1 --output \"DP-1-8\" --brightness 1; blurlock' '' --timer 3600 'systemctl suspend' ''"
@@ -277,3 +274,5 @@ assign [class="VLC"] 8
 assign [class="Spotify"] 8
 
 exec --no-startup-id setxkbmap -option ctrl:nocaps
+exec --no-startup-id redshift
+exec --no-startup-id blueman-applet
