@@ -80,3 +80,7 @@
 * Open lxqt-settings->Appearance->Themes and select "kvantum-dark" as the QT theme and "Arc-Darker" as the GTK2 and GTK3 theme
 * Download the Harmony kvantum theme from `https://store.kde.org/p/1368234` and unzip it
 * Open kvantummanager, click select a kvantum theme folder and select the harmony folder, then click "Install this theme", then click "Change/Delete Theme" and select "Harmony" in the selector, then click "Use this theme"
+
+## Screenshot
+
+[](./screenshot.png)
