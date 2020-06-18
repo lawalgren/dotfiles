@@ -83,4 +83,4 @@
 
 ## Screenshot
 
-[](./screenshot.png)
+[screenshot](./screenshot.png)
