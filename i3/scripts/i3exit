@@ -18,7 +18,7 @@ case "$1" in
         ;;
     switch_user)
 	save;
-	qdbus --system org.freedesktop.DisplayManager /org/freedesktop/DisplayManager/Seat0 org.freedesktop.DisplayManager.Seat.SwitchToGreeter
+	lxqt-leave --logout
         ;;
     suspend)
 	save;
