@@ -43,14 +43,6 @@ syntax on
 set softtabstop=2
 set shiftwidth=2
 
-inoremap jk <Esc>
-
-" Disable Arrow keys in Escape mode
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-
 " Disable scroll wheel events
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
