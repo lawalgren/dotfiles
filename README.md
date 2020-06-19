@@ -11,7 +11,7 @@
  sudo apt-get update
  sudo apt install i3-gaps-wm
  ```
- 
+* Set i3 as the window manager for lxqt: go to LXQt Settings->Basic Settings, click the dropdown under "Window Manager" and choose i3. 
 * Copy i3/config to ~/.config/i3/config
 * Install i3-blocks: `sudo apt install i3blocks`
 * Install feh: `sudo apt install feh`
