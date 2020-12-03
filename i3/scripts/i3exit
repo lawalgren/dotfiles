@@ -3,14 +3,14 @@
 
 # with openrc use loginctl
 function save {
-	~/.config/i3/scripts/save_restore.sh save
+	/home/lucas/.config/i3/scripts/save_restore.sh save
 }
 
 [ "$(cat /proc/1/comm)" = "systemd" ] && logind=systemctl || logind=loginctl
 
 case "$1" in
     lock)
-        blurlock;
+        /home/lucas/.config/i3/scripts/matrixlock.sh;
         ;;
     logout)
 	save;
@@ -18,7 +18,7 @@ case "$1" in
         ;;
     switch_user)
 	save;
-	lxqt-leave --logout
+	qdbus --system org.freedesktop.DisplayManager /org/freedesktop/DisplayManager/Seat0 org.freedesktop.DisplayManager.Seat.SwitchToGreeter
         ;;
     suspend)
 	save;

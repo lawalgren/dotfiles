@@ -5,8 +5,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/.local/bin:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$HOME/.local/bin:/home/linuxbrew/.linuxbrew/bin:/snap/bin"
 export QT_STYLE_OVERRIDE=kvantum
+export AWS_PROFILE=sandbox
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -67,6 +68,7 @@ ENABLE_CORRECTION="true"
 plugins=(
   git
   vi-mode
+	zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -100,6 +102,48 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias clip="xclip -selection clipboard"
+alias gs="git status"
+alias gc="git commit "
+alias gp="git push"
+alias ga="git add"
+alias pj="cd ~/projects"
+alias find="fdfind"
+alias ls="exa"
+alias cat="bat"
+alias grep="rg"
+alias v="vim"
+alias https-server="sudo http-server -S -C ~/.creds/cert.pem -K ~/.creds/key.pem -p 443"
+alias clipdiff="diff <(xclip -o)"
+
+function eap {
+	export AWS_PROFILE="$1";
+}
+
+function pnv {
+	sam build -t $1 && sam package --s3-bucket aspen-sandbox-cf-resources --s3-prefix $2 --template-file $1 --output-template-file deployment_template.yaml
+}
+
+function por {
+	 sam build -t $1 && sam package --s3-bucket cf-templates-aspen-us-west-2 --s3-prefix $2 --template-file $1 --output-template-file deployment_template.yaml
+}
+
+function ccm {
+	curr_dir=$(pwd);
+	cd "$1";
+	for i in $(ls); do
+		echo "$i";
+		cd "$i";
+		if [ $? -eq 0 ]; then
+			git status;
+			cd ..;
+		fi
+	done
+	cd "$curr_dir";
+}
+
 source ~/.local/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
 
+#source ~/enhancd/init.sh
+
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+zstyle ':completion:*' menu select

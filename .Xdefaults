@@ -101,3 +101,6 @@ URxvt.keysym.Control-Meta-v: builtin-string:
 URxvt.perl-ext-common: default
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+
+!! Larger history limit
+Urxvt.saveLines: 1000000
