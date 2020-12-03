@@ -47,8 +47,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'junegunn/vim-peekaboo'
 Plugin 'neoclide/coc.nvim'
 Plugin 'preservim/nerdcommenter'
-Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'godlygeek/tabular'
+Plugin 'justinmk/vim-sneak'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -344,6 +344,11 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 """ END Nerd commenter stuff
+unmap s
+unmap S
+let g:sneak#label = 1
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
 
 
 
