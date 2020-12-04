@@ -344,8 +344,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 """ END Nerd commenter stuff
-unmap s
-unmap S
 let g:sneak#label = 1
 map s <Plug>Sneak_s
 map S <Plug>Sneak_S
