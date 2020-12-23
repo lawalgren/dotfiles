@@ -274,3 +274,6 @@ assign [class="VLC"] 8
 assign [class="Spotify"] 8
 
 exec --no-startup-id setxkbmap -option ctrl:nocaps
+exec --no-startup-id redshift
+exec --no-startup-id blueman-applet
+exec --no-startup-id xdg-settings set default-web-browser google-chrome.desktop

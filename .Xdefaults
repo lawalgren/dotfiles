@@ -93,14 +93,12 @@ URxvt.pointerBlank:         true
 *color7: #eee8d5
 *color15: #fdf6e3
 
-!! copy paste fixers
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.keysym.Control-Meta-c: builtin-string:
-URxvt.keysym.Control-Meta-v: builtin-string:
-URxvt.perl-ext-common: default
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-
 !! Larger history limit
 Urxvt.saveLines: 1000000
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.perl-ext-common: default
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+URxvt.iso14755: false
+URxvt.iso14755_52: false
