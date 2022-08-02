@@ -49,6 +49,13 @@ Plugin 'neoclide/coc.nvim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'justinmk/vim-sneak'
+Plugin 'Yilin-Yang/vim-markbar'
+Plugin 'hashivim/vim-terraform'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'preservim/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-eunuch'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -110,6 +117,16 @@ nmap <silent> 2<Tab> :set tabstop=2 softtabstop=2 shiftwidth=2 <cr>
 nmap <silent> 4<Tab> :set tabstop=4 softtabstop=4 shiftwidth=4 <cr>
 nmap <silent> 8<Tab> :set tabstop=8 softtabstop=8 shiftwidth=8 <cr>
 
+"Add tab and window movement options
+map L :tabn<cr>
+map H :tabp<cr>
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
+map <silent> <C-A> :silent exec "!urxvt &" <cr>
+
 "setlocal fo+=aw
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -135,7 +152,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_checkers=['pylint']
 
 map <c-g> :call JsBeautify()<cr>
 map <c-j> :call JsonFormatter()<cr>
@@ -316,6 +334,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+nnoremap <silent><nowait> <space>n :call CocAction('diagnosticNext')<CR>
 """ END Coc stuff
 
 """ Nerd commender stuff
@@ -348,6 +367,17 @@ let g:sneak#label = 1
 map s <Plug>Sneak_s
 map S <Plug>Sneak_S
 
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
 "autocmd BufWritePost *.py call flake8#Flake8()
